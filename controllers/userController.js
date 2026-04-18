@@ -31,7 +31,21 @@ exports.createUser = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, 10);
 
         // Prevent unauthorized admin creation
-        const userRole = role === 'admin' ? 'salesperson' : role;
+        const userCount = await User.countDocuments();
+        let userRole;
+
+        if(userCount === 0){
+            userRole = role || "admin";
+        } else{
+            if(req.user?.role === "admin"){
+            userRole = role || "salesperson";
+            }else {
+            userRole = "salesPerson";
+        }
+
+        
+        }
+
 
         const user = await User.create({
             name,

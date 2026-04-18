@@ -5,6 +5,7 @@ const connectDB = require('./configs/database');
 
 const productRoute = require('./routes/productRoute');
 const userRoute = require('./routes/userRoute');
+const fakeStoreRoute = require('./routes/fakeStoreRoutes');
 
 
 const app = express();
@@ -14,9 +15,11 @@ app.use(express.json());
 // DB
 connectDB();
 
+
 // Routes
 app.use('/api', productRoute);
-app.use('/api', userRoute)
+app.use('/api', userRoute);
+app.use('/api', fakeStoreRoute);
 
 
 
