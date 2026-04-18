@@ -17,6 +17,9 @@ connectDB();
 
 
 // Routes
+app.use('/',(req, res)=>{
+    res.send("Sever is live");
+})
 app.use('/api', productRoute);
 app.use('/api', userRoute);
 app.use('/api', fakeStoreRoute);
