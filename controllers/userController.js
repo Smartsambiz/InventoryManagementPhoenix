@@ -40,7 +40,7 @@ exports.createUser = async (req, res) => {
             if(req.user?.role === "admin"){
             userRole = role || "salesperson";
             }else {
-            userRole = "salesPerson";
+            userRole = "salesperson";
         }
 
         
